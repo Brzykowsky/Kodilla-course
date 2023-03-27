@@ -10,6 +10,14 @@ public class Calculator {
         this.b = b;
     }
 
+    public Integer getA() {
+        return a;
+    }
+
+    public Integer getB() {
+        return b;
+    }
+
     public Integer add(int a, int b){
         return a + b;
     }
