@@ -8,15 +8,8 @@ import java.util.Random;
 
 public class TestingMain {
     public static void main(String[] args) {
-        SimpleUser simpleUser = new SimpleUser("theForumUser");
 
-        String result = simpleUser.getUsername();
 
-        if (result.equals("theForumUser")) {
-            System.out.println("Test 1 OK");
-        } else {
-            System.out.println("Error!");
-        }
 
         Random random = new Random();
 
