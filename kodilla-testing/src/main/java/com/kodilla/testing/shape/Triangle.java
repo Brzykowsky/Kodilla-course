@@ -2,13 +2,30 @@ package com.kodilla.testing.shape;
 
 public class Triangle implements Shape{
 
-    public void getShapeName() {
+    private double height;
+    private double base;
+    private String name = "Trójkąt";
 
+    public Triangle(double height, double base){
+        this.height = height;
+        this.base = base;
+    }
+
+    public String getShapeName() {
+        return name;
     }
 
     public double getField() {
-        return 100;
+        double area = (height * base)/2;
+        return area;
     }
 
+    public double getHeight() {
+        return height;
+    }
+
+    public double getBase() {
+        return base;
+    }
 }
 
