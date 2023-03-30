@@ -50,8 +50,7 @@ public class ForumTestSuite {
             forumUser.addPost(thePost.getAuthor(), thePost.getPostBody());
 
             //When
-            ForumPost retrievedPost;
-            retrievedPost = forumUser.getPost(0);
+            ForumPost retrievedPost = forumUser.getPost(0);
 
             //Then
             Assertions.assertEquals(thePost, retrievedPost);

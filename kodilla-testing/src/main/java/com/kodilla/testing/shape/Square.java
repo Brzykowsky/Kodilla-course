@@ -1,11 +1,11 @@
 package com.kodilla.testing.shape;
 
-public class Quadrat implements Shape {
+public class Square implements Shape {
 
     private double side;
     private String name = "Kwadrat";
 
-    public Quadrat(double side){
+    public Square(double side){
         this.side = side;
     }
 

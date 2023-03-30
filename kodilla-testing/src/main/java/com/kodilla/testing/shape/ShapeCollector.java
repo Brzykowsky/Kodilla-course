@@ -11,18 +11,28 @@ public class ShapeCollector {
             shapes.add(shape);
         }
 
-        public void removeFigure (Shape shape){
-            shapes.remove(shape);
+        public boolean removeFigure (Shape shape){
+            boolean result = false;
+            if (shapes.contains(shape)) {
+                shapes.remove(shape);
+                result = true;
+            }
+            return result;
         }
 
-        public void getFigure (int n){
-            shapes.get(n);
+        public Shape getFigure (int n){
+           return shapes.get(n);
         }
 
         public String showFigures () {
             String figuresInOneString = "";
             for (int i = 0; i < shapes.size();i++){
-                figuresInOneString += shapes.get(i);
+                String last;
+                if (i == shapes.size() - 1){
+                    figuresInOneString += shapes.get(i).getShapeName();
+                }else {
+                    figuresInOneString += (shapes.get(i).getShapeName() + ", ");
+                }
             }
             return figuresInOneString;
         }
