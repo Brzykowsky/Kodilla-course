@@ -118,7 +118,7 @@ public class ShapeCollectorTestSuite {
     }
 
     @Nested
-    @DisplayName("Tests for Triangle")
+    @DisplayName("Tests for Square")
     class TestSquare {
 
         Square square = new Square(4);
