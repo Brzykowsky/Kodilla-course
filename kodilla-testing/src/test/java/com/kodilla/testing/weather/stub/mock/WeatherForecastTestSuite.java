@@ -48,9 +48,9 @@ class WeatherForecastTestSuite {
     void testAverageTemperature(){
         //Given
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-        when(weatherForecast.averageTemperatureMethod(temperaturesMap)).thenReturn(24.0);
+        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         //When
-        double average = weatherForecast.averageTemperatureMethod(temperaturesMap);
+        double average = weatherForecast.averageTemperatureMethod();
         //Then
         Assertions.assertEquals(24,average);
     }
@@ -60,9 +60,9 @@ class WeatherForecastTestSuite {
     void testMedianTemperature(){
         //Given
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-        when(weatherForecast.medianTemperaturesMethod(temperaturesMap)).thenReturn(24.0);
+        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         //When
-        double median = weatherForecast.medianTemperaturesMethod(temperaturesMap);
+        double median = weatherForecast.medianTemperaturesMethod();
         //Then
         Assertions.assertEquals(24,median);
     }

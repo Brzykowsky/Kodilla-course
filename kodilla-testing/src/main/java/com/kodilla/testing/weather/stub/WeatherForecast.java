@@ -25,27 +25,28 @@ public class WeatherForecast {
         return resultMap;
     }
 
-    public double averageTemperatureMethod(Map<String, Double> map){
+    public double averageTemperatureMethod(){
 
+        List<Double> ListOfTemperatures = new ArrayList<>(temperatures.getTemperatures().values());
         double result;
         double sum = 0;
-        for (Double value : map.values()) {
+        for (Double value : ListOfTemperatures) {
             sum += value;
         }
-        return result = sum/map.size();
+        return result = sum / ListOfTemperatures.size();
     }
 
-    public double medianTemperaturesMethod(Map<String, Double> map){
+    public double medianTemperaturesMethod(){
 
-        List<Double> sortedList = new ArrayList<>(map.values());
+        List<Double>sortedList = new ArrayList<>(temperatures.getTemperatures().values());
         Collections.sort(sortedList);
 
-        double result;
-            if(sortedList.size() % 2 == 0){
-                result = ((sortedList.size()/2 - 1) + (sortedList.size()/2 + 1))/2;
-        }else {
-                result = sortedList.get(sortedList.size()/2);
+            double result;
+            if (sortedList.size() % 2 == 0) {
+                result = ((sortedList.size() / 2) + (sortedList.size() / 2 + 1)) / 2;
+            } else {
+                result = sortedList.get(sortedList.size() / 2);
             }
             return result;
+        }
     }
-}
