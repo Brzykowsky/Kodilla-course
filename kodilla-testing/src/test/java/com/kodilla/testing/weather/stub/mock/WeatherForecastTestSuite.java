@@ -23,6 +23,8 @@ class WeatherForecastTestSuite {
         temperaturesMap.put("Gdansk", 22.0);
     }
 
+
+
     @Mock
     private Temperatures temperaturesMock;
 
@@ -46,7 +48,6 @@ class WeatherForecastTestSuite {
     void testAverageTemperature(){
         //Given
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         //When
         double average = weatherForecast.averageTemperatureMethod(temperaturesMap);
         //Then
@@ -58,7 +59,6 @@ class WeatherForecastTestSuite {
     void testMedianTemperature(){
         //Given
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
         //When
         double median = weatherForecast.medianTemperaturesMethod(temperaturesMap);
         //Then
