@@ -1,6 +1,7 @@
-package com.kodilla.testing.weather.stub.mock;
+package com.kodilla.testing.weather.mock;
 
 import com.kodilla.testing.weather.stub.Temperatures;
+import com.kodilla.testing.weather.stub.TemperaturesStub;
 import com.kodilla.testing.weather.stub.WeatherForecast;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,15 +27,29 @@ class WeatherForecastTestSuite {
 
 
     @Mock
-    private Temperatures temperaturesMock;
+    private Temperatures temp;
 
     @DisplayName("Test of a Weather Forecast")
     @Test
     void testCalculateForecastWithMock() {
 
         //Given
-        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+        WeatherForecast weatherForecast = new WeatherForecast(temp);
+        when(temp.getTemperatures()).thenReturn(temperaturesMap);
+
+        //When
+        int quantityOfSensors = weatherForecast.calculateForecast().size();
+
+        //Then
+        Assertions.assertEquals(5, quantityOfSensors);
+    }
+
+    @DisplayName("Test with Stub")
+    @Test
+    void testCalculateForecastWithStub() {
+        //Given
+        Temperatures temperatures = new TemperaturesStub();                     // [1]
+        WeatherForecast weatherForecast = new WeatherForecast(temperatures);    // [2]
 
         //When
         int quantityOfSensors = weatherForecast.calculateForecast().size();
@@ -47,8 +62,8 @@ class WeatherForecastTestSuite {
     @Test
     void testAverageTemperature(){
         //Given
-        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+        WeatherForecast weatherForecast = new WeatherForecast(temp);
+        when(temp.getTemperatures()).thenReturn(temperaturesMap);
         //When
         double average = weatherForecast.averageTemperatureMethod();
         //Then
@@ -59,8 +74,8 @@ class WeatherForecastTestSuite {
     @Test
     void testMedianTemperature(){
         //Given
-        WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
-        when(temperaturesMock.getTemperatures()).thenReturn(temperaturesMap);
+        WeatherForecast weatherForecast = new WeatherForecast(temp);
+        when(temp.getTemperatures()).thenReturn(temperaturesMap);
         //When
         double median = weatherForecast.medianTemperaturesMethod();
         //Then
