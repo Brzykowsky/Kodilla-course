@@ -24,10 +24,11 @@ public class BookLibrary {
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser){
         List<Book> bookList = libraryDatabase.listBooksInHandsOf(libraryUser);
-        if (bookList != null) {
-            return bookList;
+        List<Book> emptyList = new ArrayList<>();
+        if (bookList == null) {
+            return emptyList;
         } else {
-            return new ArrayList<>();
+            return bookList;
         }
     }
 }
