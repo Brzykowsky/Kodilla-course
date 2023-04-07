@@ -31,7 +31,7 @@ class BookDirectoryTestSuite {
 
     @BeforeEach
            public void beforeEach() {
-        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        libraryDatabaseMock = mock(LibraryDatabase.class);
     }
 
     @Test
@@ -103,9 +103,10 @@ class BookDirectoryTestSuite {
         //Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        LibraryUser libraryUser1 = new LibraryUser(anyString(),anyString(),anyString());
-        LibraryUser libraryUser2 = new LibraryUser(anyString(),anyString(),anyString());
-        LibraryUser libraryUser3 = new LibraryUser(anyString(),anyString(),anyString());
+        LibraryUser libraryUser1 = new LibraryUser("Krystian", "Brzykowski", "123456789");
+        LibraryUser libraryUser2 = new LibraryUser("Dominik", "Nowak", "123456789");
+        LibraryUser libraryUser3 = new LibraryUser("MAteusz", "Kowalski", "123456789");
+
         List<Book> listOf0books = new ArrayList<>();
         List<Book> listOf1book = generateListOfNBooks(1);
         List<Book> listOf5books = generateListOfNBooks(5);
