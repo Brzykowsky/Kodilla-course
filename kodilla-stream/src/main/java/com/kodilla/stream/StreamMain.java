@@ -1,5 +1,6 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.array.ArrayOperations;
 import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
 import com.kodilla.stream.forumuser.Forum;
@@ -27,5 +28,6 @@ public class StreamMain {
 
         theResultListOfUsers.entrySet().stream().map(entry -> entry.getKey() + " " + entry.getValue())
                 .forEach(System.out::println);
+
     }
 }
