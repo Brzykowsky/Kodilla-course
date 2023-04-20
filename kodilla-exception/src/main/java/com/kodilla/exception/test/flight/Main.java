@@ -1,4 +1,4 @@
-package com.kodilla.exception.test;
+package com.kodilla.exception.test.flight;
 
 public class Main {
     public static void main(String[] args) throws RouteNotFoundException {
