@@ -12,37 +12,23 @@ public class FlightService {
         flightsList.add(flight);
     }
 
+    public List<Flights> getFlight(String formCity, String viaCity, String toCity) {
 
-    public List<List<Flights>> getFlightsTo(String departuresCity, String arrivalCity) {
-
-        List<Flights> flightFrom = new ArrayList<>();
-        flightFrom = flightsList.stream()
-                .filter(flight -> flight.getDepartureAirport().equals(departuresCity))
-                .toList();
-
-        List<Flights> flightTo = new ArrayList<>();
-        flightTo = flightsList.stream()
-                .filter(flight -> flight.getArrivalAirport().equals(arrivalCity))
-                .toList();
-
-        List<List<Flights>> flightFromTo = new ArrayList<>();
-        flightFromTo.add(flightFrom);
-        flightFromTo.add(flightTo);
-
-        return flightFromTo;
-    }
-
-    public List<Flights> getFlightsBy(String formCity, String viaCity, String toCity) {
-        List<Flights> viaFlight = new ArrayList<>();
-
-//        viaFlight = flightsList.stream()
-//                .filter()
-
+        List<Flights> flights = new ArrayList<>();
 
         if (!viaCity.isEmpty()){
-
+        flights = flightsList.stream()
+                .filter(flight -> flight.getDepartureAirport().equals(formCity))
+                .filter(flight -> flight.getArrivalAirport().equals(toCity))
+                .filter(flight -> flight.getViaAirport().equals(viaCity))
+                .collect(Collectors.toList());
+        return flights;
+        }else {
+            flights = flightsList.stream()
+                    .filter(flight -> flight.getDepartureAirport().equals(formCity))
+                    .filter(flight -> flight.getArrivalAirport().equals(toCity))
+                    .collect(Collectors.toList());
+            return flights;
         }
-
-        return viaFlight;
     }
 }
