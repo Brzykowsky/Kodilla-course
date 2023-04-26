@@ -1,8 +1,10 @@
 package com.kodilla.spring.calculator;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service
+@Scope("prototype")
 public class Calculator {
 
     private final Display display;
