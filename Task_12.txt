@@ -1,0 +1,91 @@
+{\rtf1\ansi\ansicpg1250\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red191\green100\blue38;\red32\green32\blue32;\red153\green168\blue186;
+\red88\green118\blue71;\red133\green96\blue154;\red86\green132\blue173;\red254\green187\blue91;}
+{\*\expandedcolortbl;;\csgenericrgb\c74902\c39216\c14902;\csgenericrgb\c12549\c12549\c12549;\csgenericrgb\c60000\c65882\c72941;
+\csgenericrgb\c34510\c46275\c27843;\csgenericrgb\c52157\c37647\c60392;\csgenericrgb\c33725\c51765\c67843;\csgenericrgb\c99608\c73333\c35686;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs26 \cf2 \cb3 create database \cf4 kodilla_course\cf2 ;\
+\
+show DATABASES;\
+\
+create user \cf5 'kodilla_user' \cf2 identified with \cf4 MYSQL_NATIVE_PASSWORD \cf2 by \cf5 'kodilla_Pass123'\cf2 ;\
+\
+GRANT ALL PRIVILEGES ON \cf4 kodilla_course.* \cf2 to \cf4 kodilla_user\cf2 ;\
+\
+show TABLES;\
+\
+CREATE TABLE \cf4 USERS\
+(\
+    \cf6 ID \cf2 SERIAL PRIMARY KEY,\
+    \cf6 FIRSTNAME \cf2 VARCHAR\cf4 (\cf7 100\cf4 )\cf2 ,\
+    \cf6 LASTNAME \cf2 VARCHAR\cf4 (\cf7 100\cf4 )\
+)\cf2 ;\
+\
+CREATE TABLE \cf4 POSTS\
+(\
+    \cf6 ID \cf2 SERIAL PRIMARY KEY,\
+    \cf6 USER_ID \cf2 BIGINT UNSIGNED NOT NULL,\
+    \cf6 BODY \cf2 VARCHAR\cf4 (\cf7 1024\cf4 )\cf2 ,\
+    FOREIGN KEY \cf4 (\cf6 USER_ID\cf4 ) \cf2 REFERENCES \cf4 USERS(\cf6 ID\cf4 )\
+)\cf2 ;\
+\
+CREATE TABLE \cf4 ISSUESLISTS\
+(\
+    \cf6 ID \cf2 SERIAL PRIMARY KEY,\
+    \cf6 NAME \cf2 VARCHAR\cf4 (\cf7 100\cf4 )\
+)\cf2 ;\
+\
+CREATE TABLE \cf4 ISSUES\
+(\
+    \cf6 ID \cf2 SERIAL PRIMARY KEY,\
+    \cf6 ISSUESLIST_ID \cf2 BIGINT UNSIGNED NOT NULL,\
+    \cf6 SUMMARY \cf2 VARCHAR\cf4 (\cf7 100\cf4 )\cf2 ,\
+    \cf6 DESCRIPTION \cf2 VARCHAR\cf4 (\cf7 1024\cf4 )\cf2 ,\
+    \cf6 USER_ID_ASSIGNEDTO \cf2 BIGINT UNSIGNED NOT NULL,\
+    FOREIGN KEY \cf4 (\cf6 ISSUESLIST_ID\cf4 ) \cf2 REFERENCES \cf4 ISSUESLISTS(\cf6 ID\cf4 )\cf2 ,\
+    FOREIGN KEY \cf4 (\cf6 USER_ID_ASSIGNEDTO\cf4 ) \cf2 REFERENCES \cf4 USERS(\cf6 ID\cf4 )\
+)\cf2 ;\
+\
+SELECT \cf8 * \cf2 FROM \cf4 ISSUESLISTS\cf2 ;\
+SELECT \cf8 * \cf2 FROM \cf4 ISSUES\cf2 ;\
+SELECT \cf8 * \cf2 FROM \cf4 USERS\cf2 ;\
+SELECT \cf8 * \cf2 FROM \cf4 POSTS\cf2 ;\
+\
+INSERT INTO \cf4 ISSUESLISTS(\cf6 NAME\cf4 )\
+\cf2 VALUES \cf4 (\cf5 'ToDo'\cf4 )\cf2 ,\cf4 (\cf5 'In progress'\cf4 )\cf2 ,\cf4 (\cf5 'Done'\cf4 )\cf2 ;\
+\
+INSERT INTO \cf4 USERS (\cf6 FIRSTNAME\cf2 , \cf6 LASTNAME\cf4 )\
+\cf2 VALUES \cf4 (\cf5 'John' \cf2 , \cf5 'Smith'\cf4 )\cf2 ,\
+       \cf4 (\cf5 'Zachary'\cf2 , \cf5 'Lee'\cf4 )\cf2 ,\
+       \cf4 (\cf5 'Stephanie'\cf2 , \cf5 'Kovalsky'\cf4 )\cf2 ,\
+       \cf4 (\cf5 'Thomas'\cf2 , \cf5 'Landgren'\cf4 )\cf2 ,\
+       \cf4 (\cf5 'John'\cf2 , \cf5 'Thomson'\cf4 )\cf2 ;\
+\
+INSERT INTO \cf4 POSTS (\cf6 USER_ID\cf2 , \cf6 BODY\cf4 )\
+\cf2 VALUES \cf4 (\cf7 2\cf2 , \cf5 'This is my first post too!'\cf4 )\cf2 ,\
+       \cf4 (\cf7 2\cf2 , \cf5 'How are you?'\cf4 )\cf2 ,\
+       \cf4 (\cf7 1\cf2 , \cf5 'Quite good, thanks bro!'\cf4 )\cf2 ,\
+       \cf4 (\cf7 4\cf2 , \cf5 'Yo all! Here is Thomas!'\cf4 )\cf2 ;\
+\
+INSERT INTO \cf4 ISSUES(\cf6 ISSUESLIST_ID\cf2 , \cf6 SUMMARY\cf2 , \cf6 DESCRIPTION\cf2 , \cf6 USER_ID_ASSIGNEDTO\cf4 )\
+\cf2 VALUES \cf4 (\cf7 1\cf2 ,\cf5 'Clean House'\cf2 , \cf5 'Vacuum the floor'\cf2 , \cf7 1\cf4 )\cf2 ,\
+       \cf4 (\cf7 1\cf2 ,\cf5 'Do the laundry'\cf2 , \cf5 'Wash the clothes'\cf2 , \cf7 2\cf4 )\cf2 ,\
+       \cf4 (\cf7 1\cf2 ,\cf5 'Buy groceries'\cf2 , \cf5 'Milk, bread, eggs'\cf2 , \cf7 3\cf4 )\cf2 ,\
+       \cf4 (\cf7 1\cf2 ,\cf5 'Pay bills'\cf2 , \cf5 'Electricity, gas, water'\cf2 , \cf7 4\cf4 )\cf2 ,\
+       \cf4 (\cf7 1\cf2 ,\cf5 'Walk the dog'\cf2 , \cf5 'In the park'\cf2 , \cf7 5\cf4 )\cf2 ,\
+       \cf4 (\cf7 2\cf2 ,\cf5 'Update website'\cf2 , \cf5 'Change the homepage image'\cf2 , \cf7 1\cf4 )\cf2 ,\
+       \cf4 (\cf7 2\cf2 ,\cf5 'Fix bugs'\cf2 , \cf5 'On the contact form'\cf2 , \cf7 2\cf4 )\cf2 ,\
+       \cf4 (\cf7 2\cf2 ,\cf5 'Add new feature'\cf2 , \cf5 'Allow users to upload images'\cf2 , \cf7 3\cf4 )\cf2 ,\
+       \cf4 (\cf7 2\cf2 ,\cf5 'Test performance'\cf2 , \cf5 'For large datasets'\cf2 , \cf7 4\cf4 )\cf2 ,\
+       \cf4 (\cf7 2\cf2 ,\cf5 'Optimize code'\cf2 , \cf5 'Reduce page loading time'\cf2 , \cf7 5\cf4 )\cf2 ,\
+       \cf4 (\cf7 3\cf2 ,\cf5 'Submit project'\cf2 , \cf5 'For review'\cf2 , \cf7 1\cf4 )\cf2 ,\
+       \cf4 (\cf7 3\cf2 ,\cf5 'Prepare presentation'\cf2 , \cf5 'Slides and script'\cf2 , \cf7 2\cf4 )\cf2 ,\
+       \cf4 (\cf7 3\cf2 ,\cf5 'Schedule meeting'\cf2 , \cf5 'With team members'\cf2 , \cf7 3\cf4 )\cf2 ,\
+       \cf4 (\cf7 3\cf2 ,\cf5 'Assign tasks'\cf2 , \cf5 'To team members'\cf2 , \cf7 4\cf4 )\cf2 ,\
+       \cf4 (\cf7 3\cf2 ,\cf5 'Give feedback'\cf2 , \cf5 'On team performance'\cf2 , \cf7 5\cf4 )\cf2 ;\
+\
+COMMIT;\
+}
