@@ -1,0 +1,23 @@
+{
+"typeOfCar": "Sedan",
+"brandOfCar": "Audi"
+"seats"[
+{
+"material": "leather",
+"color": "black",
+},
+{
+"material": "alcantara",
+"color": "red",
+},
+{
+"material": "fabric",
+"color": "grey",
+},
+{
+"material": "leather",
+"color": "white",
+}
+]
+"engine_capacity": "1.8L"
+}
